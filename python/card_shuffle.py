@@ -1,22 +1,32 @@
+"""Card shuffling Algorithm."""
 from random import randint, random
 
+
 class Card:
+    """Class defines a single playing card."""
 
     def __init__(self, rank, suite):
+        """Create new playing card with rank and suite."""
         self.rank = rank
         self.suite = suite
 
     def __repr__(self):
-        # print rank right justified to char size of 'Queen'
-        # print suite left justified to char size of 'Diamonds'
+        """Return string representation of playing Card.
+
+        Print rank right justified to char size of Queen.
+        print suite left justified to char size of 'Diamonds'
+        """
         return "[{:>6} | {:<9}]".format(self.rank, self.suite)
 
 
 class DeckOfCards:
+    """Class to manage a Deck(list) of card objects."""
+
     faces = ('Jack', 'Queen', 'King', 'Ace')
     suites = ('Clubs', 'Diamonds', 'Hearts', 'Spades')
 
     def __init__(self):
+        """On instantiate instantiate deck of 52 playing cards in a list."""
         self.deck = []
 
         for suite in self.suites:
@@ -25,16 +35,16 @@ class DeckOfCards:
             for face in self.faces:
                 self.deck.append(Card(face, suite))
 
-
     def print_deck(self):
+        """Print a deck of cards."""
         print("-------------------------")
         for card in self.deck:
-            print (" {} ".format(card))
+            print(" {} ".format(card))
         print("-------------------------")
 
-
     def perfect_shuffle(self):
-        split_point = len(self.deck)//2 # integer division
+        """Suffle deck of cards."""
+        split_point = len(self.deck)//2  # integer division
         trailing_half = self.deck[split_point:]
         del self.deck[split_point:]
 
@@ -43,11 +53,10 @@ class DeckOfCards:
             self.deck.insert(j+1, trailing_half[i])
             j += 2
 
-
     def stack_shuffle(self, fudge=0, error_prob=0.4):
-
+        """Shuffle a deck of cards using a stack data structure."""
         # split deck in half + or - 10
-        fudge_factor = randint(-fudge,fudge)
+        fudge_factor = randint(-fudge, fudge)
         split_point = len(self.deck)//2 + fudge_factor
         # determine bigger half
 
@@ -67,21 +76,25 @@ class DeckOfCards:
 
 
 def test_perfect_shuffle():
+    """Test perfect shuffle method in DeckOfCards class."""
     new_deck = DeckOfCards()
     new_deck.print_deck()
-    #breakpoint()
+    # breakpoint()
     for i in range(0, 20):
         new_deck.perfect_shuffle()
     new_deck.print_deck()
     print(len(new_deck.deck))
 
+
 def test_stack_shuffle():
+    """Test the stack shuffle method in DeckOfCards class."""
     new_deck = DeckOfCards()
     new_deck.print_deck()
     for i in range(0, 38571):
         new_deck.stack_shuffle(fudge=10, error_prob=0.3)
     new_deck.print_deck()
     print(len(new_deck.deck))
+
 
 if __name__ == '__main__':
     # test_perfect_shuffle()
