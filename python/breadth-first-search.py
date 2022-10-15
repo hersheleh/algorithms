@@ -3,19 +3,16 @@
 
 def BFS(G, root):
     """Implement Breadth First Search algorithm."""
-    a = "what"
-    c = 0
-    for i in range(0, 10):
-        print("I am debugging")
-        c = i + c
-        print(i)
-    print(a)
-    print("Hello Grisha")
+    Q = []                  # A queue
+    # label root as explored
+    Q.append(root)
+    while (len(Q) > 0):
+        v = Q.pop(0)
+
 
 
 def HelloGGG():
     """Do it."""
 
-
-if __name__ == '__main__':
+3if __name__ == '__main__':
     BFS(0, 0)
