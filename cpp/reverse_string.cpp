@@ -31,31 +31,44 @@ string reverseWords_getline(string s) {
   return output.substr(0, s.length());
 }
 
-/*Takes a space serparated string as input and
-  reverses each word */
+/* Reverses each word in a space serparated string */
 string reverseWords(string s) {
-  // char i_string[s.length()+1];
-  char *i_string = &s[0];
+
+  char i_string[s.length()+1];
+  strcpy(i_string, s.c_str());
+  cout << i_string << endl;
+
+  // for (int i = 0; i < s.length(); i++) {
+  //   i_string[i] = s[i];
+  // }
+
   int word_start = 0;
   int word_end;
+  int end_of_string = s.length() - 1; // the last character
+  char current_char;
+  char next_char;
 
   for (int i=0; i< s.length(); i++) {
-
     /* when we reach a space or end of string
      begin swapping letters*/
-    if (s[i+1] == ' ' || i == s.length() - 1) {
+
+    current_char = i_string[i];        // the current char
+    next_char = i_string[i+1];         // The char after this one
+    cout << "something random" << endl;
+    cout << next_char << endl;
+
+    if (next_char == ' ' || i == end_of_string) {
 
       word_end = i;
 
-      int word_length = word_end - word_start;
-
       while( word_start < word_end) {
-        // swap indices
-        char temp = s[word_end];
-        s[word_end] = s[word_start];
-        s[word_start] = temp;
-        i_string = &s[0];
-        // strcpy(i_string, s.c_str());
+        // swap indicese
+        char temp = i_string[word_end];
+        i_string[word_end] = i_string[word_start];
+        i_string[word_start] = temp;
+
+        cout << i_string << endl;
+
         // move start index up and end index down
         word_start++;
         word_end--;
