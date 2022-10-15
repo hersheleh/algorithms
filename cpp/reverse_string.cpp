@@ -85,7 +85,8 @@ int main(int argc, char * argv[]) {
   // string out = reverseWords_getline("Let's take LeetCode contest");
   // cout << out << endl;
 
-  reverseWords("Let's take LeetCode contest");
+  string result = reverseWords("Let's take LeetCode contest");
+  cout << result << endl;
 
   return EXIT_SUCCESS;
 }
