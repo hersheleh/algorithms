@@ -6,8 +6,7 @@ import os
 import random
 import re
 import sys
-
-
+from g_graph import g_Graph
 #
 # Complete the 'getMinCost' function below.
 #
@@ -29,19 +28,8 @@ import sys
 
 def getMinCost(val, t_nodes, t_from, t_to):
     """Calculate the minimum tree decrements."""
-    a_list = {}             # adjacency list
-
-    for i in range(len(t_from)):    # iterate through edges of graph
-        node_from = str(t_from[i])  # convert from node for this edge to str
-        node_to = str(t_to[i])      # convert to node for this edge to str
-
-        if a_list.get(node_from) is None:  # check if node is in adj list
-            a_list.update({node_from: []})  # if not create an empty list
-
-        node_from_list = a_list.get(node_from)
-        node_from_list.append(node_to)  # if yes append to list
-
-    print("A List: %s" % a_list)
+    tree = g_Graph(val, t_nodes, t_from, t_to)
+    tree.breath_first_search(1)
 
 
 if __name__ == '__main__':
@@ -49,24 +37,28 @@ if __name__ == '__main__':
     # fptr = open('stdout', 'w')
 
     val_count = int(input().strip())
+    print("val_count %s " % val_count)
 
     val = []
 
     for _ in range(val_count):
         val_item = int(input().strip())
+        print("val_item %s " % val_item)
         val.append(val_item)
 
     t_nodes, t_edges = map(int, input().rstrip().split())
+    print("t_nodes: %s, t_edges: %s" % (t_nodes, t_edges))
 
     t_from = [0] * t_edges
-    t_to = [0] * t_edges3
+    t_to = [0] * t_edges
 
     for i in range(t_edges):
         t_from[i], t_to[i] = map(int, input().rstrip().split())
+        print("t_from[i]: %s, t_to[i]:%s" % (t_from[i], t_to[i]))
 
-    result = getMinCost(val, t_nodes, t_from, t_to)
+        # result = getMinCost(val, t_nodes, t_from, t_to)
 
-    print(str(result))
+    # print(str(result))
     # fptr.write(str(result) + '\n')
 
     # fptr.close()
