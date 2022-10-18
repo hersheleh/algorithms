@@ -44,20 +44,22 @@ class g_Graph:
             to_node = t_to[edge]
             # add to_node to from_node's adjacency list
             self.nodes[from_node].adjacent.append(to_node)
+            # add from_node to to_node's adjacency list
+            self.nodes[to_node].adjacent.append(from_node)
 
     def breath_first_search(self, source):
         """Breadth First Search algorithm."""
         # iterate over all vertices and initialize
-        source_node = self.nodes[source]
-        for i in range(len(self.nodes)):
-            source_node.color[i] = Color.White
-            source_node.distance[i] = float('inf')
-            source_node.parent[i] = None
+        src_node = self.nodes[source]
+        for i in self.nodes.keys():
+            src_node.color[i] = Color.White
+            src_node.distance[i] = float('inf')
+            src_node.parent[i] = None
 
         # initialize & discover the source node
-        source_node.color[source] = Color.Grey
-        source_node.distance[source] = 0
-        source_node.parent[source] = None
+        src_node.color[source] = Color.Grey
+        src_node.distance[source] = 0
+        src_node.parent[source] = None
 
         Queue = []              # Create a new empty queue
 
@@ -68,14 +70,14 @@ class g_Graph:
             # iterate through adjacent nodes
             for adj_node in self.nodes[current_node].adjacent:
                 # if the adjacent node is White (undiscovered)
-                if (source_node.color[adj_node] == Color.White):
+                if (src_node.color[adj_node] == Color.White):
                     # color it Grey (discover it)
-                    source_node.color[adj_node] = Color.Grey
+                    src_node.color[adj_node] = Color.Grey
                     # update the adjacent nodes distance from source
-                    current_node.distance = source_node.distance[current_node]
-                    source_node.distance[adj_node] = current_node.distance + 1
+                    current_node_dist = src_node.distance[current_node] + 1
+                    src_node.distance[adj_node] = current_node_dist
                     # set the adjacent nodes parent to current node
-                    source_node.parent[adj_node] = current_node
+                    src_node.parent[adj_node] = current_node
                     Queue.append(adj_node)
-                # color the current node Black (visited)
-                source_node.color[current_node] = Color.Black
+            # color the current node Black (visited)
+            src_node.color[current_node] = Color.Black

@@ -28,14 +28,35 @@ from g_graph import g_Graph
 
 def getMinCost(val, t_nodes, t_from, t_to):
     """Calculate the minimum tree decrements."""
+    # create graph from given data
     tree = g_Graph(val, t_nodes, t_from, t_to)
+    # run BFS on node 1
     tree.breath_first_search(1)
+    tree.nodes[1].distance
+    odd_nodes = set()
 
+    for i in val:
+        if (val[i] % 2) != 0:
+            node = i + 1
+            odd_nodes.append(node)
+            tree.breath_first_search(node)
+
+    for node in odd_nodes:
+        for
+        tree.nodes[node].distance
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
     # fptr = open('stdout', 'w')
-
+    """
+    3
+    2
+    1
+    1
+    3 2
+    1 2
+    1 3
+    """
     val_count = int(input().strip())
     print("val_count %s " % val_count)
 
