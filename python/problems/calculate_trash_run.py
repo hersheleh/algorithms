@@ -18,7 +18,7 @@ def calculate_trash(trash_type, D, T):
 
 
 def solution(D, T):
-    # write your code in Python 3.8.10
+    """Calculate Trash runs for glass metal & plasitc."""
     glass_trip = calculate_trash('G', D, T)  # calculate Glass
     metal_trip = calculate_trash('M', D, T)  # calculate Metal
     plastic_trip = calculate_trash('P', D, T)  # calculate Plastic

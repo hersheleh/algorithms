@@ -31,55 +31,21 @@ def getMinCost(val, t_nodes, t_from, t_to):
     # create graph from given data
     tree = g_Graph(val, t_nodes, t_from, t_to)
     # run BFS on node 1
-    tree.breath_first_search(1)
-    tree.nodes[1].distance
     odd_nodes = set()
 
-    for i in val:
+    for i in range(len(val)):
         if (val[i] % 2) != 0:
             node = i + 1
-            odd_nodes.append(node)
+            odd_nodes.add(node)
             tree.breath_first_search(node)
 
     for node in odd_nodes:
-        for
-        tree.nodes[node].distance
+        print(node)
+
 
 if __name__ == '__main__':
-    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
-    # fptr = open('stdout', 'w')
-    """
-    3
-    2
-    1
-    1
-    3 2
-    1 2
-    1 3
-    """
-    val_count = int(input().strip())
-    print("val_count %s " % val_count)
-
-    val = []
-
-    for _ in range(val_count):
-        val_item = int(input().strip())
-        print("val_item %s " % val_item)
-        val.append(val_item)
-
-    t_nodes, t_edges = map(int, input().rstrip().split())
-    print("t_nodes: %s, t_edges: %s" % (t_nodes, t_edges))
-
-    t_from = [0] * t_edges
-    t_to = [0] * t_edges
-
-    for i in range(t_edges):
-        t_from[i], t_to[i] = map(int, input().rstrip().split())
-        print("t_from[i]: %s, t_to[i]:%s" % (t_from[i], t_to[i]))
-
-        # result = getMinCost(val, t_nodes, t_from, t_to)
-
-    # print(str(result))
-    # fptr.write(str(result) + '\n')
-
-    # fptr.close()
+    val = [3, 2, 4, 2, 5]
+    t_nodes = 5
+    t_from = [1, 1, 3, 3]
+    t_to = [2, 3, 4, 5]
+    min_cost = getMinCost(val, t_nodes, t_from, t_to)
