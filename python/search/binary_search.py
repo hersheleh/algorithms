@@ -3,7 +3,13 @@
 
 def binary_search():
     """Implement binary search."""
-    pass
+    try {
+            print(abs(11.02))
+            abs(432)
+
+    }
+
+
 
 
 if __name__ == '__main__':

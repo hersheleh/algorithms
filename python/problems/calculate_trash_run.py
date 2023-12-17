@@ -1,6 +1,5 @@
 """Calculate Max trash takeout time."""
 
-
 def calculate_trash(trash_type, D, T):
     """Collect Trash."""
     trip_total = 0

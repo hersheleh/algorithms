@@ -1,5 +1,5 @@
 """Quick Sort Algorithm."""
-import random
+# import random
 
 
 def partition(A, low, high):

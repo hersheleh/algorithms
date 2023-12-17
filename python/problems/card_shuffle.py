@@ -90,7 +90,7 @@ def test_stack_shuffle():
     """Test the stack shuffle method in DeckOfCards class."""
     new_deck = DeckOfCards()
     new_deck.print_deck()
-    for i in range(0, 38571):
+    for _ in range(0, 38571):
         new_deck.stack_shuffle(fudge=10, error_prob=0.3)
     new_deck.print_deck()
     print(len(new_deck.deck))
