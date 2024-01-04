@@ -23,11 +23,6 @@ def substring_permutations(B, S):
 
 
 if __name__ == '__main__':
-
-
-
-
-
     B = "cbabadcbbabbcbabaabccbabc"
     S = "abbc"
     print("permutations: %s" % substring_permutations(B, S))
