@@ -13,11 +13,11 @@ class Tree:
         """Return string representation of tree as array."""
         return repr(self.tree)
 
-    def get_node(self):
+    def get_node_index(self):
         """Return the current node."""
         return self.node
 
-    def get_left_node(self):
+    def get_left_node_index(self):
         """Return index of left node. Or index of node if it's a leaf."""
         if (not isinstance(self.node, int)):
             raise TypeError(
@@ -29,7 +29,7 @@ class Tree:
             return self.node
         return left_node
 
-    def get_right_node(self):
+    def get_right_node_index(self):
         """Return index of right node. Or index of node if it's a leaf."""
         if (not isinstance(self.node, int)):
             raise TypeError(
@@ -43,8 +43,8 @@ class Tree:
 
     def goto_left_node(self):
         """Set current node to left node."""
-        self.node = self.get_left_node()
+        self.node = self.get_left_node_index()
 
     def goto_right_node(self):
         """Set curruent node to right node."""
-        self.node = self.get_left_node()
+        self.node = self.get_left_node_index()
